@@ -1,0 +1,33 @@
+ALPHABET_RU = 'абвгдеёжзиклмнопрстуфхчшщъыьэюяАБВГДЕЁЖЗИКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯasdfghjklmnbvcxzqwertyuiopASDFGHJKLMNBVC' \
+              'XZQWERTYUIOP '
+
+
+def encryption_caesar(msg, offset):
+    encrypted_alphabet = ALPHABET_RU[offset:] + ALPHABET_RU[:offset]
+    encrypted = []
+    for char in msg:
+        index = get_char_index(char, ALPHABET_RU)
+        encrypted_char = encrypted_alphabet[index]
+        encrypted.append(encrypted_char)
+    return ''.join(encrypted)
+def get_char_index(char, alphabet):
+    char_index = alphabet.find(char)
+    return char_index
+def decryption_caesar(msg, offset=None):
+    encrypted_alphabet =  ALPHABET_RU[:offset] + ALPHABET_RU[offset:]
+    decrypted = []
+    for char in msg:
+        index = get_char_index(char, encrypted_alphabet)
+        encrypted_char = encrypted_alphabet[index - offset]
+        decrypted.append(encrypted_char)
+    return ''.join(decrypted)
+
+
+
+if __name__ == '__main__':
+    message = input('введите сообщение:   ')
+    shift = int(input('введите шаг:  '))
+    encrypted_message = encryption_caesar(message, shift)
+    print('Сообщение: %s' % message)
+    print('Зашифрованное сообщение: %s' % encrypted_message)
+    print('Расшифрованное сообщение: %s' % decryption_caesar(encrypted_message, shift))
