@@ -1,0 +1,68 @@
+class Checkpoint1:
+    def __init__(self, Number, number_of_people=0, checkpoint_entrance=0, checkpoint_exit=0):
+        self.number = Number
+        self.number_of_people = number_of_people
+        self.checkpoint_entrance = checkpoint_entrance
+        self.checkpoint_exit = checkpoint_exit
+
+    def entrance_checkpoint(self):
+        self.checkpoint_entrance +=1
+
+    def exit_checkpoint(self):
+        self.checkpoint_exit += 1
+
+    def count(self):
+        if self.checkpoint_entrance - self.checkpoint_exit<0:
+            self.number_of_people = 0
+        else:
+            self.number_of_peoplet = self.checkpoint_entrance - self.checkpoint_exit
+
+
+
+class worker:
+    def __init__(self, first_name, surname, patronymic, department_number, ID):
+        self.first_name = first_name
+        self.surname = surname
+        self.patronymic = patronymic
+        self.department_number = department_number
+        self.ID = ID
+
+    def r_entrance(self, _checkpoint):
+        if self.department_number == _checkpoint.number:
+            print('exict.    ', self.first_name, self.surname, self.patronymic)
+            _checkpoint.count()
+            _checkpoint.entrance_checkpoint()
+
+    def r_exit(self, _checkpoint):
+        if self.department_number == _checkpoint.number:
+            print('exit.    ', self.first_name, self.surname, self.patronymic)
+            _checkpoint.count()
+            _checkpoint.exit_checkpoint()
+
+
+passage1 = Checkpoint1(1)
+passage2 = Checkpoint1(2)
+passage3 = Checkpoint1(3)
+
+
+worker1 = worker('dartaniyn', 'elbov', 'eduardovih', 1, 25)
+worker2 = worker('dartaniyn', 'elbov', 'eduardovih', 2, 23)
+worker3 = worker('dartaniyn', 'elbov', 'eduardovih', 3, 35)
+
+
+worker1.r_entrance(passage1)
+worker2.r_entrance(passage2)
+worker3.r_entrance(passage3)
+
+counter_worker = passage1.number_of_people + passage2.number_of_people + passage3.number_of_people
+
+print(counter_worker)
+print()
+
+
+worker1.r_exit(passage1)
+worker2.r_exit(passage2)
+worker3.r_exit(passage3)
+
+counter_worker = passage1.number_of_people + passage2.number_of_people + passage3.number_of_people
+print(counter_worker)
