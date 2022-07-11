@@ -27,7 +27,7 @@ class Matrix:
         return matrix_s
 
     def upheaval(self):
-        matrix_a = [rw[:] for rw in self.matrix1.copy()]
+        matrix_a = [rw[:] for rw in self.matrix.copy()]
         matrix_b = [[0 for l in range(self.column)] for i in range(self.lines)]
         for i in range(len(matrix_a)):
             for a in range(len(matrix_a[0])):
@@ -44,7 +44,7 @@ class Matrix:
 
     def subtraction(self, matrixa):
         matrix_a = [rw[:] for rw in self.matrix.copy()]
-        if len(matrix_a) == len(matrixa) and len(matrix_1[0]) == len(matrixa[0]):
+        if len(matrix_a) == len(matrixa) and len(matrix_a[0]) == len(matrixa[0]):
             for i in range(len(matrix_a)):
                 for a in range(len(matrix_a[0])):
                     matrix_a[i][a] = matrixa[a][i]
@@ -85,9 +85,8 @@ def ex_matr2(matrix_a):
         print()
 
 
-nomer_1 = Matrix(100, 100)
-nomer_2 = Matrix(100, 100)
-nomer_1.subtraction(nomer_2)
+nomer_1 = Matrix(10, 10)
+nomer_2 = Matrix(10, 10)
 print(nomer_1.matrix)
 ex_matr(nomer_1)
 print()
